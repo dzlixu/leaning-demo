@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/jquery2.0.3.js"></script>
+    <title>2-2</title>
+</head>
+<body>
+<ul></ul>
+<script>
+$(function(){
+//    var str='<li>1</li><li>2</li><li>3</li>';
+//    var arr= $.parseHTML(str);
+//    console.log(arr);
+    var aa=["a","b"];
+    var bb = ['b','c'];
+    console.log($.merge(aa,bb));
+    $('<li>',{title:'hello',html:'条目1'}).appendTo('ul');
+
+})
+</script>
+</body>
+</html>

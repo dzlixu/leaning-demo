@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<style type="text/css">
+
+		.msg_caption span {
+			border: 1px solid #999;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<div class="msg">
+			<div class="msg_caption">
+				<span class="bigger">放大</span>
+				<span class="smaller">缩小</span>
+			</div>
+			<div>
+				<textarea id="comment" rows="8" cols="20">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</textarea>
+			</div>
+		</div>
+		<div class="msg">
+			<div class="msg_caption">
+				<span class="up">上</span>
+				<span class="down">下</span>
+			</div>
+			<div>
+				<textarea id="comment2" rows="8" cols="20">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</textarea>
+			</div>
+		</div>
+	</form>
+	<script type="text/javascript" src="jquery2.0.3.js"></script>
+	<script>
+		$(function(){
+			var $comment=$('#comment');
+			$('.bigger').click(function(){
+				if(!$comment.is(":animated")){
+					if($comment.height()<500){
+						$comment.animate({height :"+=50"},400);
+					}
+				}
+
+			});
+			$('.smaller').click(function(){
+				if(!$comment.is(":animated")){
+					if($comment.height()>50){
+						$comment.animate({height :"-=50"},400);
+					}
+				};
+			});
+
+			var $comment2=$('#comment2');
+			$('.up').click(function(){
+				if(!$comment2.is(":animated")){
+					$comment2.animate({scrollTop :"-=50"},400);
+				}
+
+			});
+			$('.down').click(function(){
+				if(!$comment2.is(":animated")){
+					$comment2.animate({scrollTop :"+=50"},400);
+				};
+			});
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript" src="jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+    	//判断浏览器类型
+    	$(document).ready(function(){
+    		//firefox
+    		// if($.browser.mozilla && $.browser.version >="1.8"){
+    		// 	alert('firefox浏览器，版本大于');
+    		// }
+    		// //safari
+    		// if($.browser.safari){
+    		// 	alert("this is a safari brower");
+    		// }
+    		//chrome
+    		if($.browser.chrome){
+    			alert("this is a chrome brower");
+    		}
+    		//opera
+    		if($.browser.opera){
+    			alert("this is a opera");
+    		}
+    		//ie6+
+    		if($.browser.msie){
+    			alert("this is a ie brower");
+    		}
+    	})
+    </script>
+</body>
+</html>

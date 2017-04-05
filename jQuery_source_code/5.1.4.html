@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	.centent{
+		display: inline-block;
+	}
+	span{
+		border: 1px solid #666;
+		background: #f1f2f1;
+	}
+	span:hover{
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+    <div class="centent" >
+    	<select id="select1" multiple="" style="width:100px;height:160px">
+    		<option value="1"> 选项1</option>
+    		<option value="2"> 选项2</option>
+    		<option value="3"> 选项3</option>
+    		<option value="4"> 选项4</option>
+    		<option value="5"> 选项5</option>
+    		<option value="6"> 选项6</option>
+    		<option value="7"> 选项7</option>
+    		<option value="8"> 选项8</option>
+    		<option value="9"> 选项9</option>
+    	</select>
+    	<div>
+    		<span id="add">选中添加到右边&gt;&gt;</span> <br>
+    		<span id="add_all">全部添加到右边&gt;&gt;</span>
+    	</div>
+    </div>
+    <div class="centent">
+    	<select multiple="true" id="select2" style="width:100px;height:160px">
+    		
+    	</select>
+
+    	<div>
+    		<span id="remove">&gt;&gt;选中删除到左边</span><br>
+    		<span id="remove_all">&gt;&gt;全部删除到左边</span>
+    	</div>
+    </div>
+    <script type="text/javascript" src="jquery2.0.3.js"></script>
+    <script type="text/javascript">
+    	//第一个功能
+    	$('#add').click(function () {
+    		var $options= $('#select1 option:selected');
+    		$options.appendTo('#select2');
+    	})
+    	//第二个功能，全部选中
+    	$('#add_all').click(function(){
+    		var $options=$('#select1 option');
+    		$options.appendTo('#select2');
+    	})
+    	//第三功能，双击选中
+    	$('#select1').dblclick(function () {
+    		var $options= $('option:selected',this);
+    		$options.appendTo('#select2');
+    	})
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- meta使用viewport以确保页面可自由缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 引入 jQuery 库 -->
+    <script src="js/jquery2.0.3.js"></script>
+    <title>jQuery 源码第1章</title>
+</head>
+
+<body>
+    <h1>jQuery 源码第1章</h1>
+    <h2>延迟对象</h2>
+    <script>
+    var dfd = $.Deferred();
+    setTimeout(function() {
+        alert(1);
+        dfd.resolve();
+    }, 1000);
+
+    dfd.done(function() {
+        alert(2);
+    });
+    var a = 1,
+        b = 'str';
+    console.log($.type(a));
+    console.log($.type(b));
+    if ($.browser.msie)
+        alert($.browser.version);
+    function Flayer (name){
+        this.name=name;
+    }
+    Flayer.prototype={
+        pro:"proto"
+    }
+    var ls = new Flayer("flee");
+    console.log(ls.pro);
+    </script>
+</body>
+
+</html>

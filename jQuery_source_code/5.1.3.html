@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <form>
+    	你爱好的运动是？<br/>
+    	<input type="checkbox" name="items" value="足球">足球
+    	<input type="checkbox" name="items" value="篮球">篮球
+    	<input type="checkbox" name="items" value="羽毛球">羽毛球
+    	<input type="checkbox" name="items" value="乒乓球">乒乓球
+    	<input type="button"  id="checkedAll" value="全选">
+    	<input type="button" id="checkedNo" value="全不选">
+    	<input type="button" id="checkRev" value="反选" name="">
+    	<input type="button" id="send" value="提交" name="">
+    </form>
+    <script type="text/javascript" src="jquery2.0.3.js"></script>
+    <script type="text/javascript" >
+    	$('#checkedAll').click(function(){
+    		$('[name=items]:checkbox').attr('checked',true);
+    	});
+    	$('#checkedNo').click(function(){
+    		$('[name=items]:checkbox').attr('checked',false);
+    	});
+    	$("#checkRev").click(function(){
+    		$('[name=items]:checkbox').each(function(){
+    			this.checked=!this.checked;
+    		});
+    	})
+    	$('#send').click(function(){
+    		var str = "你选中的是：\r\n";
+    		$('[name=items]:checkbox:checked').each(function(){
+    			str+=$(this).val()+"\r\n";
+    		});
+    		alert(str);
+    	})
+    </script>
+</body>
+</html>

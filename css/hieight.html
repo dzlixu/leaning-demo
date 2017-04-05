@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度</title>
+    <style>
+        .cont{
+            with:800px;
+            /*height:600px;*/
+            margin: 0 auto;
+            border:1px solid #888;
+        }
+        .one {
+            height:20%;
+            background-color: #005500;
+            font-style: oblique;
+            color:#fff;
+            -webkit-font-smoothing: antialiased;
+            /*-webkit-transform:scale(0.8);*/
+        }
+        .test {
+            height: calc(100%-100px);
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="cont">
+    <div class="one">
+           斜体字
+    </div>
+    <div class="test">
+
+    </div>
+
+    <a href="img/2.jpg" download><img src="" alt=""/></a>
+
+    <a href="img/2.jpg" download="网站LOGO" >下载</a>
+
+    <form action="#">
+        <input type="search"/>
+    </form>
+
+</div>
+<div class="container">
+    <div class="demo"></div>
+</div>
+<style>
+    .container {
+        background-color:yellow;
+        width:800px;
+        hegiht:600px;
+    }
+    .demo {
+        width: 200px;
+        height:100px;
+        margin-left:-100%;
+        background:lime;
+    }
+</style>
+</body>
+</html>

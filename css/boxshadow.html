@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.box-shadow {
+            width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid #f22900;
+            box-shadow: 0 0 5px 10px #999;
+        }
+        
+        .box1 {
+            width: 600px;
+            height: 200px;
+            border: 1px solid darkred;
+            margin-bottom: 10px;
+        }
+        
+        .box2 {
+            width: 600px;
+            height: 200px;
+            /*border: 1px solid blueviolet;*/
+            margin-top: 25px;
+        }
+        
+        .subbox {
+            width: 300px;
+            height: 100px;
+            border: 1px solid #666;
+            margin-top: 35px;
+        }
+        
+        .box2::before {
+            content: "";
+            display: table;
+            height: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-shadow"></div>
+    <div class="box1">
+        box1
+    </div>
+    <div class="box2">
+        <div class="subbox">
+            subbox
+        </div>
+    </div>
+    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo doloribus autem dolor, voluptates explicabo inventore aperiam sed ut. Cumque amet quam nam qui similique expedita aut, sint iusto omnis mollitia?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quod tempora nobis hic magnam. Suscipit odio veritatis minus earum, exercitationem a harum perferendis! At nesciunt, dolore praesentium soluta, in velit.</p>
+    <h1>this is h1</h1>
+    <h2>this is h2</h2>
+    <ul>
+        <li>list 1</li>
+        <li>list 2</li>
+    </ul>
+    <dl>
+        <dt>this is dt</dt>
+        <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae ex blanditiis, eius a saepe nesciunt veritatis temporibus minima totam, eligendi odit dolor earum impedit consequuntur voluptatibus rerum optio, eaque, et.</dd>
+    </dl>
+</body>
+
+</html>

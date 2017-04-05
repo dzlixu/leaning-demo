@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>notifation</title>
+</head>
+<body>
+
+<button id="notifyButton">检查</button>
+<button id="requestbutton">触发</button>
+<button id="notifyButton1">检查</button>
+<button id="requestButton1">触发</button>
+<script>
+    document.getElementById('notifyButton').onclick = function(){
+        //判断浏览器是否支持notification
+        if(window.webkitNotifications){
+            //判断当前页面是否被允许发出通知
+            if(webkitNotifications.checkPermission==0){
+                var icon_url = 'http://www.w3.org/';
+                var title = 'Hello HTML5';
+                var body = 'I will be always here waiting for you!';
+                var WebkitNotification = webkitNotifications.createNotification(icon_url, title, body);
+                WebkitNotification.show();
+            }else{
+                document.getElementById('requestbutton').onclick = function () {
+                    webkitNotifications.requestPermission();
+                };
+            }
+        }else alert("您的浏览器不支持桌面通知特性，请下载谷歌浏览器试用该功能");
+    };
+    document.getElementById('notifyButton1').onclick = function () {
+        if (window.Notification){
+            if(Notification.Permission==='granted'){
+                var notification = new Notification('Hello Notification',{body:"I hope that all the browser will support this\                   function!"});
+            }else {
+                document.getElementById('requestButton1').onclick = function (){
+                    Notification.requestPermission();
+                };
+            };
+        }else alert('你的浏览器不支持此特性，请下载谷歌浏览器试用该功能');
+    };
+</script>
+</body>
+</html>
