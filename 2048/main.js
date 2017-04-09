@@ -19,26 +19,23 @@ var game = {
             this.randomNum(); //调用randomNumd（）方法
             this.randomNum(); //调用randomNumd（）方法
             this.updateView();
-            // this.randomView(); //更新页面
             var me = this; //留住this
             // 为当前页面绑定键盘事件
             document.onkeydown = function(e) {
+                console.log(e.keyCode);
                 if (me.state == me.RUNNING) {
                     switch (e.keyCode) {
                         case 37:
-                            this.moveLeft();
+                            me.moveLeft();
                             break;
                         case 38:
-                            this.moveUp();
+                            me.moveUp();
                             break;
                         case 39:
-                            this.moveRight();
+                            me.moveRight();
                             break;
                         case 40:
-                            this.moveDown();
-                            break;
-                        case 100:
-                            this.moveUp();
+                            me.moveDown();
                             break;
                     }
                 }
@@ -64,16 +61,147 @@ var game = {
                     }
                 }
             }
+            return true;
             //遍历结束，返回true
         },
-        moveLeft: function() { //左移所有行
+        move: function(fun) {
+            var before = String(this.data);
+            fun.call(this);
+            var after = String(this.data);
+            console.log(before);
+            console.log(after);
+            if (before != after) {
+                this.randomNum();
+                if (this.isGameover()) {
+                    this.state = this.GAMEOVER;
+                }
+                this.updateView();
+            }
+        },
+        moveDown: function() {
+            this.move(function() {
+                for (var c = 0; c < this.CN; c++) {
+                    this.moveDownInCol(c);
+                }
+            })
+        },
+        moveDownInCol: function(c) {
+            for (var r = this.RN - 1; r > 0; r--) {
+                var prevr = this.getPrevInCol(r, c);
+                if (prevr == -1) { break; } else {
+                    if (this.data[r][c] == 0) {
+                        this.data[r][c] = this.data[prevr][c];
+                        this.data[prevr][c] = 0;
+                        r++;
+                    } else if (this.data[r][c] == this.data[prevr][c]) {
+                        this.data[r][c] *= 2;
+                        this.score += this.data[r][c];
+                        this.data[prevr][c] = 0;
+                    }
+                }
+            }
+        },
+        getPrevInCol: function(r, c) {
+            for (var prevr = r - 1; prevr >= 0; prevr--) {
+                if (this.data[prevr][c] != 0) {
+                    return prevr;
+                }
+            }
+            return -1;
+        },
+        moveUp: function() {
+            this.move(function() {
+                for (var c = 0; c < this.CN; c++) {
+                    this.moveUpInCol(c);
+                }
+            })
 
+        },
+        moveUpInCol: function(c) {
+            for (var r = 0; r < this.RN; r++) {
+                var nextr = this.getNextInCol(r, c);
+                if (nextr == -1) { break; } else {
+                    if (this.data[r][c] == 0) {
+                        this.data[r][c] = this.data[nextr][c];
+                        this.data[nextr][c] = 0;
+                        r--;
+                    } else if (this.data[r][c] = this.data[nextr][c]) {
+                        this.data[r][c] *= 2;
+                        this.score = this.data[nextr][c];
+                        this.data[nextr][c] = 0;
+                    }
+                }
+            }
+        },
+        getNextInCol(r, c) {
+            for (var nextr = r + 1; nextr < this.RN; nextr++) {
+                if (this.data[nextr][c] != 0) {
+                    return nextr;
+                }
+            }
+            return -1;
+        },
+        moveRight: function() {
+            this.move(function() {
+                for (var r = 0; r < this.RN; r++) {
+                    this.moveRightInRow(r);
+                }
+            })
+        },
+        moveRightInRow: function(r) {
+            for (var c = this.CN - 1; c > 0; c--) {
+                var prevc = this.getPrevInRow(r, c);
+                if (prevc == -1) { break; } else {
+                    if (this.data[r][c] == 0) {
+                        this.data[r][c] = this.data[r][prevc];
+                        this.data[r][prevc] = 0;
+                        c++;
+                    } else if (this.data[r][c] == this.data[r][prevc]) {
+                        this.data[r][c] *= 2;
+                        this.score += this.data[r][c];
+                        this.data[r][prevc] = 0;
+                    }
+                }
+            }
+        },
+        getPrevInRow: function(r, c) {
+            for (var prevc = c - 1; prevc >= 0; prevc--) {
+                if (this.data[r][prevc] != 0) {
+                    return prevc;
+                }
+            }
+            return -1;
+        },
+        moveLeft: function() { //左移所有行
+            this.move(function() {
+                for (var r = 0; r < this.RN; r++) {
+                    this.moveLeftInRow(r);
+                }
+            })
         },
         moveLeftInRow: function(r) { //左移动第r行
-
+            for (var c = 0; c < this.CN - 1; c++) {
+                var nextc = this.getNextInRow(r, c);
+                if (nextc == -1) { break; } else {
+                    if (this.data[r][c] == 0) {
+                        this.data[r][c] == this.data[r][nextc];
+                        this.data[r][nextc] = 0;
+                        c--;
+                    } else if (this.data[r][c] == this.data[r][nextc]) {
+                        this.data[r][c] *= 2;
+                        this.score += this.data[r][c];
+                        this.data[r][nextc] = 0;
+                    }
+                }
+            }
         },
-        getNextInRow: function() { //查找r行c列右侧下一个不为0的位置
-
+        getNextInRow: function(r, c) { //查找r行c列右侧下一个不为0的位置
+            for (var nextc = c + 1; nextc < this.CN; nextc++) {
+                if (this.data[r][nextc] != 0) {
+                    return nextc;
+                }
+            }
+            return -1;
         },
         updateView: function() { //将data中的元素，更新到页面的格子div中
             //r从0开始，到<RN结束，每次增1
@@ -106,11 +234,11 @@ var game = {
                     var num = Math.random();
                     //设置data中r行c列的元素值为:
                     //如果num<0.5,就设置2为,否则就设置为4
-                    this.data[r][c] = num < 0.5 ? 2 : 4;
+                    this.data[r][c] = num < 0.6 ? 2 : 4;
                     break; //退出循环
                 }
             }
-        },
+        }
     }
     //当页面加载后，自动启动
 window.onload = function() { game.start(); }
