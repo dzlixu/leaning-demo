@@ -70,3 +70,36 @@ function fun() {
 }
 fun(n);
 console.log(n);
+
+/**
+ * 斐波那契数列
+ */
+//递归
+function Fib(n) {
+    if (n < 2) {
+        return 1;
+    } else {
+        return Fib(n - 2) + Fib(n - 1);
+    }
+}
+console.log(Fib(10)); // 55
+
+// 动态规划来实现
+function Fib(n) {
+    var arr = [];
+    for (var i = 0; i < n; i++) {
+        arr[i] = 0;
+    }
+    if (n == 1 || n == 2) {
+        return 1;
+    } else {
+        arr[1] = 1;
+        arr[2] = 1;
+        for (var i = 3; i <= n; i++) {
+            arr[i] = arr[i - 2] + arr[i - 1];
+        }
+        return arr[n - 1];
+    }
+}
+
+console.log(Fib(10)); // 55
