@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex demo</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: center;
+            flex-wrap: wrap;
+            align-content: center;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(top, #222, #333);
+        }
+        
+        .box {
+            display: flex;
+            margin: 16px;
+            padding: 4px;
+            background-color: #e7e7e7;
+            width: 104px;
+            height: 104px;
+            object-fit: contain;
+            box-shadow: inset 0 5px white, inset 0 -5px #bbb, inset 5px 0 #d7d7d7, inset -5px 0 #d7d7d7;
+            border-radius: 10%;
+        }
+        
+        .item {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin: 4px;
+            background-color: #333;
+            box-shadow: inset 0 3px #111, inset 0 -3px #555;
+        }
+        
+        .first {
+            display: flex;
+        }
+        
+        .demo2 {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .demo3 {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .demo4 {
+            display: flex;
+            align-items: center;
+        }
+        
+        .demo5 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .demo6 {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        .demo7 {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+        
+        .demo8 {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .demo9 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .demo10 {
+            display: flex;
+        }
+        
+        .demo10 span:nth-child(2) {
+            align-self: center;
+        }
+        
+        .demo11 {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .demo11 span:nth-child(2) {
+            align-self: flex-end;
+        }
+        
+        .demo12 {
+            display: flex;
+        }
+        
+        .demo12 span.item:nth-child(2) {
+            align-self: center;
+        }
+        
+        .demo12 span.item:nth-child(3) {
+            align-self: flex-end;
+        }
+        
+        .demo13 {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        
+        .demo14 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .demo14 .column {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .demo15 {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        
+        .demo16 {
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        
+        .grid {
+            display: flex;
+        }
+        
+        .grid-cell {
+            background-color: #999;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+  
+
+    <div class="box demo16">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box demo15">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box demo14">
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+    <div class="box demo13">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box demo12">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box first">
+        <span class="item"></span>
+    </div>
+    <div class="box demo2">
+        <span class=" item "></span>
+    </div>
+    <div class="box demo3">
+        <span class=" item "></span>
+    </div>
+    <div class="box demo4">
+        <span class=" item "></span>
+    </div>
+    <div class="box demo5">
+        <span class=" item "></span>
+    </div>
+    <div class="box demo6">
+        <span class=" item "></span>
+    </div>
+    </div>
+    <div class="box demo7">
+        <span class=" item "></span>
+    </div>
+    <div class="box demo8">
+        <span class=" item "></span>
+        <span class=" item "></span>
+    </div>
+    <div class="box demo9">
+        <span class=" item "></span>
+        <span class=" item "></span>
+    </div>
+    <div class="box demo10">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+    <div class="box demo11">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+</body>
+
+</html>
