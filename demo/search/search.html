@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(./bg.jpg) center center no-repeat;
+            height: 100vh;
+        }
+        
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .border {
+            border: 1px solid #333;
+        }
+        
+        .box {
+            position: relative;
+            top: 175px;
+            left: 25%;
+            width: 400px;
+            display: flex;
+            height: 40px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            color: #fff;
+            line-height: 40px;
+            margin: 0 10px;
+        }
+        
+        input {
+            flex: 1;
+            font-size: 20px;
+            line-height: 36px;
+        }
+        
+        .sear {
+            width: 40px;
+            background-color: #0C8484;
+            background-image: url(./search.png);
+            background-size: 100%;
+        }
+        
+        .result {
+            display: none;
+            width: 278px;
+            position: relative;
+            top: 175px;
+            left: 31%;
+            background-color: #fff;
+        }
+        
+        .result.act {
+            display: block;
+        }
+        
+        .result li {
+            padding-left: 10px;
+            line-height: 30px;
+        }
+    </style>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <span class="logo">必应</span><input type="text"><span class="sear"></span>
+    </div>
+    <div class="result border">
+        <ul>
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+            <li>list4</li>
+        </ul>
+    </div>
+
+    <script src="./jquery2.0.3.js"></script>
+    <script>
+        $(function() {
+            req = "https://www.bing.com/AS/Suggestions?pt=page.home&mkt=zh-cn&qry=dt&cp=2&cvid=809A31FEECD146B7A171FAF3930DD1C3";
+            $("input").on('keyup', function() {
+                if (this.value) {
+                    url = "http://www.bing.com/AS/Suggestions?pt=page.home&mkt=zh-cn&qry=" + this.value + "&cp=2&cvid=809A31FEECD146B7A171FAF3930DD1C3";
+                    $.get(url, function(res) {
+                        console.dir(res);
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
